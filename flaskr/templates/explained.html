@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendation system explained - BookMatch</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #a855f7;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .nav-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .section-box {
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .comparison-table td, .comparison-table th {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .workflow-diagram {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 2rem 0;
+        }
+
+        .diagram-step {
+            text-align: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            width: 200px;
+        }
+
+        .example-section {
+            background: #f3f4f6;
+            padding: 1.5rem;
+            border-left: 4px solid var(--secondary-color);
+            margin: 1.5rem 0;
+        }
+    
+        .book-example {
+            background: #fff;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <a href="http://127.0.0.1:5000/" class="button is-primary nav-button">
+        <span class="icon"><i class="fas fa-arrow-left"></i></span>
+        <span>Return to Recommendation System</span>
+    </a>
+
+    <div class="container">
+        <h1 class="title is-1 has-text-centered mb-6">How Our Recommendation System Works</h1>
+
+        <!-- Content-based recommendations -->
+        <div class="section-box">
+            <h2 class="title is-3">Content-Based Recommendations</h2>
+            <div class="content">
+                <div class="book-example">
+                    <h4 class="title is-5">Your Rated Books Example:</h4>
+                    <p>You rated these books ★★★★★:</p>
+                    <ul>
+                        <li><strong>Swan Song</strong> (Post-apocalyptic themes)</li>
+                        <li><strong>Daughter of the Forest</strong> (Celtic mythology)</li>
+                        <li><strong>Pandora: New Tales of the Vampires</strong> (Gothic fiction)</li>
+                    </ul>
+                </div>
+
+                <h3 class="title is-4">How It Works</h3>
+                <div class="workflow-diagram">
+                    <!-- 更新步骤说明 -->
+                    <div class="diagram-step">
+                        <i class="fas fa-dna fa-2x has-text-primary"></i>
+                        <p class="mt-2">1. Extract book DNA<br>
+                        <small>Genre, themes, writing style</small></p>
+                    </div>
+                    <div class="diagram-step">
+                        <i class="fas fa-brain fa-2x has-text-primary"></i>
+                        <p class="mt-2">2. Neural network analysis<br>
+                        <small>300+ dimensional feature space</small></p>
+                    </div>
+                    <div class="diagram-step">
+                        <i class="fas fa-project-diagram fa-2x has-text-primary"></i>
+                        <p class="mt-2">3. Semantic matching<br>
+                        <small>BERT embeddings similarity</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Collaborative Filtering -->
+        <div class="section-box">
+            <h2 class="title is-3">Collaborative Filtering</h2>
+            <div class="content">
+                <div class="book-example">
+                    <h4 class="title is-5">Community Wisdom Example:</h4>
+                    <p>Users who loved <strong>Nora Roberts</strong> also rated highly:</p>
+                    <ul>
+                        <li>Kristin Hannah's summer-themed novels</li>
+                        <li>Historical fiction with strong heroines</li>
+                        <li>Atmospheric mystery series</li>
+                    </ul>
+                </div>
+
+                <h3 class="title is-4">How It Works</h3>
+                <div class="workflow-diagram">
+                    <div class="diagram-step">
+                        <i class="fas fa-book-open fa-2x has-text-primary"></i>
+                        <p class="mt-2">1. Analyze Your Ratings<br>
+                        <small>Extract features from rated books</small></p>
+                    </div>
+                    <div class="diagram-step">
+                        <i class="fas fa-microscope fa-2x has-text-primary"></i>
+                        <p class="mt-2">2. Match Book Features<br>
+                        <small>Compare 500+ content attributes</small></p>
+                    </div>
+                    <div class="diagram-step">
+                        <i class="fas fa-chart-line fa-2x has-text-primary"></i>
+                        <p class="mt-2">3. Predict Ratings<br>
+                        <small>Neural network prediction model</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced Comparison Table -->
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Content-Based</th>
+                    <th>Collaborative</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Best for</td>
+                    <td>Niche preferences<br><small>(e.g., Celtic mythology)</small></td>
+                    <td>Popular trends<br><small>(e.g., Nora Roberts fans)</small></td>
+                </tr>
+                <tr>
+                    <td>Data Sources</td>
+                    <td>Book metadata & text analysis</td>
+                    <td>50M+ user ratings</td>
+                </tr>
+                <tr>
+                    <td>Cold Start</td>
+                    <td>Needs 3+ rated books</td>
+                    <td>Works immediately</td>
+                </tr>
+                <tr>
+                    <td>Diversity</td>
+                    <td>Thematic consistency</td>
+                    <td>Cross-genre discovery</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Technical Implementation -->
+        <div class="section-box">
+            <h2 class="title is-3">Advanced ML Architecture</h2>
+            <div class="columns">
+                <div class="column">
+                    <h3 class="title is-4">Content-Based Stack</h3>
+                    <ul>
+                        <li>BERT for text embedding</li>
+                        <li>Neural MF for feature fusion</li>
+                        <li>FAISS similarity search</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3 class="title is-4">Collaborative Stack</h3>
+                    <ul>
+                        <li>Alternating Least Squares (ALS)</li>
+                        <li>LightFM hybrid model</li>
+                        <li>Real-time Spark streaming</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="has-text-centered mt-4">
+                <img src="https://via.placeholder.com/800x200?text=ML+Model+Architecture+Diagram" 
+                     alt="Machine Learning Pipeline" 
+                     style="width:100%;border-radius:8px;">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
